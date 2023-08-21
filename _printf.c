@@ -6,7 +6,7 @@
  *
  * Return: The number of characters printed, always 1.
  */
-int print_char(va_list types)
+int print_char(va_list ptr)
 {
     char c = va_arg(types, int);
 
