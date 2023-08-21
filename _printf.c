@@ -35,7 +35,7 @@ int print_string(va_list ptr)
 		charcount++;
 	}
 
-    return (write(1, str, strlen(charcount)));
+    return (write(1, str2, strlen(charcount)));
 }
 
 
