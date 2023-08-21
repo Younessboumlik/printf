@@ -23,7 +23,7 @@ int print_char(va_list ptr)
 
 int print_string(va_list ptr)
 {
-    int charcount=0;
+    int charcount = 0;
     char *str2 = va_arg(ptr, char*);
     if (str2 == NULL)
     {
@@ -36,7 +36,7 @@ int print_string(va_list ptr)
         str2 = str2 + 1;
         charcount++;
     }
-    return charcount;
+    return (charcount);
 }
 
 /**
