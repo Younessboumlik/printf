@@ -71,15 +71,12 @@ int _printf(const char *format, ...)
                 case 'c':
                     charcount += print_char(ptr);
                     format += 2;
-                    break;
                 case 's':
                     charcount += print_string(ptr);
                     format += 2;
-                    break;
                 case '%':
                     charcount += print_pourcentage();
                     format += 2;
-                    break;
                 default:
                     break;
             }
