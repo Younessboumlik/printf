@@ -8,9 +8,9 @@
  */
 int print_char(va_list ptr)
 {
-    char c = va_arg(ptr, int);
+	char c = va_arg(ptr, int);
 
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -21,16 +21,16 @@ int print_char(va_list ptr)
  */
 int print_string(va_list ptr)
 {
-    int charcount = 0;
-    char *str2 = va_arg(ptr, char *);
+	int charcount = 0;
+	char *str2 = va_arg(ptr, char *);
 
-    if (str2 == NULL)
-        str2 = "(null)";
+	if (str2 == NULL)
+		str2 = "(null)";
 
-    while (str2[charcount] != '\0')
-        charcount++;
+	while (str2[charcount] != '\0')
+		charcount++;
 
-    return (write(1, str2, charcount));
+	return (write(1, str2, charcount));
 }
 
 /**
@@ -40,7 +40,7 @@ int print_string(va_list ptr)
  */
 int print_pourcentage(void)
 {
-    return (write(1, "%", 1));
+	return (write(1, "%", 1));
 }
 
 /**
