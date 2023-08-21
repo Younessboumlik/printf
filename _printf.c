@@ -1,5 +1,4 @@
 #include "main.h"
-#include "_printf2.c"
 
 /**
  * print_char - it is printing one char.
@@ -95,9 +94,6 @@ int _printf(const char *format, ...)
 			charcount += print_pourcentage();
 			format += 2;
 		}
-		else if ((*format == '%') && ((*(format + 1) == 'd') || ((*(format + 1) == 'i'))
-                        count += _print_number(va_arg(args, int));
-                        break;
 		else
 		{
 			write(1, format, 1);
