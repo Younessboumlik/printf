@@ -6,12 +6,11 @@
  *
  * Return: The number of characters printed, always 1.
  */
-int print_char(va_list ptr)
+int print_char(va_list types)
 {
-	char str1 = va_arg(ptr, int);
+    char c = va_arg(types, int);
 
-	write(1, &str1, 1);
-	return (1);
+    return write(1, &c, 1);
 }
 
 /**
@@ -22,35 +21,23 @@ int print_char(va_list ptr)
  */
 int print_string(va_list ptr)
 {
-	int charcount = 0;
-	char *str2 = va_arg(ptr, char *);
+    char *str = va_arg(ptr, char *);
 
-	if (str2 == NULL)
-	{
-		str2 = "(null)";
-	}
+    if (str == NULL)
+        str = "(null)";
 
-	while (*str2)
-	{
-		write(1, str2, 1);
-		str2 = str2 + 1;
-		charcount++;
-	}
-
-	return (charcount);
+    return write(1, str, strlen(str));
 }
+
 
 /**
  * print_pourcentage - Prints a %.
  *
  * Return: The number of characters printed, always 1.
  */
-int print_pourcentage(void)
+int print_percent(void)
 {
-	char str3 = '%';
-
-	write(1, &str3, 1);
-	return (1);
+    return write(1, "%", 1);
 }
 
 /**
