@@ -89,7 +89,7 @@ int _printf(const char *format, ...)
 			charcount += print_pourcentage();
 			format += 2;
 		}
-		else if ((*format == '%'))
+		else if ((*format == '%') && (*(format + 1) != '%') && (*(format + 1) != 's') && (*(format + 1) != 'c'))
 		{
 			format++;
 		}
