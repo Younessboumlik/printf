@@ -21,12 +21,21 @@ int print_char(va_list ptr)
  */
 int print_string(va_list ptr)
 {
-    char *str = va_arg(ptr, char *);
+	int charcount = 0;
+	char *str2 = va_arg(ptr, char *);
 
-    if (str == NULL)
-        str = "(null)";
+	if (str2 == NULL)
+	{
+		str2 = "(null)";
+	}
 
-    return (write(1, str, strlen(str)));
+	while (*str2)
+	{
+		str2 = str2 + 1;
+		charcount++;
+	}
+
+    return (write(1, str, strlen(charcount)));
 }
 
 
