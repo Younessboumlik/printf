@@ -6,6 +6,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+int print_char(va_list ptr);
+int print_string(va_list ptr);
+int print_pourcentage();
 int _printf(const char *format, ...);
 char *int_to_char(int num);
 int my_strlen(const char *str);
