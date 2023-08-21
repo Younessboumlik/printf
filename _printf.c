@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *print_char - it is printing one char.
+ * print_char - it is printing one char.
  *
- *@ptr: a pointer that point at the arg.
- *Return: the number of characters printed, and it is always 1.
+ * @ptr: a pointer that point at the arg.
+ * Return: the number of characters printed, and it is always 1.
  */
 
 int print_char(va_list ptr)
@@ -15,12 +15,11 @@ int print_char(va_list ptr)
 }
 
 /**
- *print_string - it is printing one string.
+ * print_string - it is printing one string.
  *
- *@ptr: a pointer that point at the arg.
- *Return: the number of characters printed, and it is the lengh of string.
+ * @ptr: a pointer that point at the arg.
+ * Return: the number of characters printed, and it is the lengh of string.
  */
-
 
 int print_string(va_list ptr)
 {
@@ -36,9 +35,9 @@ int print_string(va_list ptr)
 }
 
 /**
- *print_pourcentage - it is printing a %.
+ * print_pourcentage - it is printing a %.
  *
- *Return: the number of characters printed, and it is always 1.
+ * Return: the number of characters printed, and it is always 1.
  */
 int print_pourcentage()
 {
@@ -48,9 +47,9 @@ int print_pourcentage()
 }
 
 /**
- * _printf - it is the printf function.
+ *  _printf - it is the printf function.
  *
- * @format: a cte char.
+ *  @format: a cte char.
  * Return: the number of characters printed.
  */
 
