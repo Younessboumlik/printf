@@ -80,7 +80,7 @@ int _printf(const char *format, ...)
                     format += 2;
                     break;
                 default:
-                    return (-1);
+                    format += 1;
                     break;
             }
         }
