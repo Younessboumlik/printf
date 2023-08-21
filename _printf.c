@@ -4,7 +4,7 @@
  * print_char - it is printing one char.
  *
  * @ptr: a pointer that point at the arg.
- * Return: the number of characters printed, and it is always 1.
+ * Return: the number of characters printed, it is always 1.
  */
 
 int print_char(va_list ptr)
@@ -18,7 +18,7 @@ int print_char(va_list ptr)
  * print_string - it is printing one string.
  *
  * @ptr: a pointer that point at the arg.
- * Return: the number of characters printed, and it is the lengh of string.
+ * Return: the lengh of string.
  */
 
 int print_string(va_list ptr)
