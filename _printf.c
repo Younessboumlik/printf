@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *print_char - it is printing one char.
+ * print_char - it is printing one char.
  *
- *@ptr: a pointer that point at the arg.
- *Return: the number of characters printed, it is always 1.
+ * @ptr: a pointer that point at the arg.
+ * Return: the number of characters printed, it is always 1.
  */
 
 int print_char(va_list ptr)
@@ -16,10 +16,10 @@ int print_char(va_list ptr)
 }
 
 /**
- *print_string - it is printing one string.
+ * print_string - it is printing one string.
  *
- *@ptr: a pointer that point at the arg.
- *Return: the lengh of string.
+ * @ptr: a pointer that point at the arg.
+ * Return: the lengh of string.
  */
 
 int print_string(va_list ptr)
@@ -44,9 +44,9 @@ int print_string(va_list ptr)
 }
 
 /**
- *print_pourcentage - it is printing a %.
- *
- *Return: the number of characters printed, and it is always 1.
+ * print_pourcentage - it is printing a %.
+ * @void: nothing.
+ * Return: the number of characters printed, and it is always 1.
  */
 int print_pourcentage(void)
 {
@@ -57,8 +57,8 @@ int print_pourcentage(void)
 }
 /**
  * my_strlen - lengh of a string.
- *
- *Return: the lengh.
+ * @str: the string.
+ * Return: the lengh.
  */
 int my_strlen(const char *str) {
     int len = 0;
@@ -72,12 +72,13 @@ int my_strlen(const char *str) {
 /**
  * int_to_char - transform int to char.
  *
+ * @num: the number.
  * Return: return a char caontaining the number.
  */
 
 char *int_to_char(int num)
 {
-    int i = 1, a = num,j = 1;
+    int i = 1, a = num, j = 1;
     char *char_num;
 
     if (num == 0)
@@ -93,7 +94,7 @@ char *int_to_char(int num)
     char_num[j] = '\0';
         while (num != 0)
     {
-        char_num[j - i] =((num % 10)+ '0');
+        char_num[j - i] = ((num % 10) + '0');
         num = num / 10;
         i++;
     }
@@ -101,10 +102,10 @@ char *int_to_char(int num)
 }
 
 /**
- *_printf - it is the printf function.
+ * _printf - it is the printf function.
  *
  * @format: a cte char.
- *Return: the number of characters printed.
+ * Return: the number of characters printed.
  */
 
 int _printf(const char *format, ...)
