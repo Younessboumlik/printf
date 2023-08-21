@@ -25,10 +25,11 @@ int print_string(va_list ptr)
 	int charcount = 0;
 	char *str2 = va_arg(ptr, char *);
 
-	if (str2 == NULL)
+	if (str == NULL)
 	{
-		write(1, "(null)", 6);
-		return (-1);
+		str = "(null)";
+		if (precision >= 6)
+			str = "      ";
 	}
 
 	while (*str2)
