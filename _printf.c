@@ -25,6 +25,11 @@ int print_string(va_list ptr)
 {
     int charcount = 0;
     char *str2 = va_arg(ptr, char*);
+    if (str2 == NULL)
+    {
+        write(1, "(null)", 6);
+        return (-1);
+    }
     while (*str2)
     {
         write(1, str2, 1);
@@ -63,25 +68,26 @@ int _printf(const char *format, ...)
         return (-1);
     while (*format)
     {
-        if (*format == '%')
+        if ((*format == '%') && (*(format + 1) == 'c'))
         {
-            switch (*(format + 1))
-            {
-                case 'c':
-                    charcount += print_char(ptr);
-                    format += 2;
-                    break;
-                case 's':
-                    charcount += print_string(ptr);
-                    format += 2;
-                    break;
-                case '%':
-                    charcount += print_pourcentage();
-                    format += 2;
-                    break;
-                default:
-                    break;
-            }
+            charcount += print_char(ptr);
+            format += 2;
+        }
+        else if ((*format == '%') && (*(format + 1) == 's'))
+        {
+            charcount += print_string(ptr);
+            format += 2;
+        }    
+        else if ((*format == '%') && (*(format + 1) == '%'))
+        {
+            charcount += print_pourcentage();
+            format += 2;
+        }
+        else if ((*format == '%'))
+        {
+            write(1, format, 1);
+            charcount++;
+            format++;
         }
         else
         {
@@ -90,5 +96,6 @@ int _printf(const char *format, ...)
             format++;
         }
     }
+    va_end(ptr);
     return (charcount);
 }
