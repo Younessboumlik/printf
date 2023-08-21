@@ -1,25 +1,27 @@
 #include "main.h"
 
 /**
- * print_char - Prints one char.
- * @ptr: A pointer that points at the arg.
+ *print_char - it is printing one char.
  *
- * Return: The number of characters printed, always 1.
+ *@ptr: a pointer that point at the arg.
+ *Return: the number of characters printed, it is always 1.
  */
+
 int print_char(va_list ptr)
 {
-	char str1 = (char)va_arg(ptr, int);
+	char str1 = (char)(va_arg(ptr, int));
 
 	write(1, &str1, 1);
 	return (1);
 }
 
 /**
- * print_string - Prints one string.
- * @ptr: A pointer that points at the arg.
+ *print_string - it is printing one string.
  *
- * Return: The length of the string.
+ *@ptr: a pointer that point at the arg.
+ *Return: the lengh of string.
  */
+
 int print_string(va_list ptr)
 {
 	int charcount = 0;
@@ -42,9 +44,9 @@ int print_string(va_list ptr)
 }
 
 /**
- * print_pourcentage - Prints a %.
+ *print_pourcentage - it is printing a %.
  *
- * Return: The number of characters printed, always 1.
+ *Return: the number of characters printed, and it is always 1.
  */
 int print_pourcentage(void)
 {
@@ -55,11 +57,12 @@ int print_pourcentage(void)
 }
 
 /**
- * _printf - The printf function.
- * @format: A constant char.
+ *_printf - it is the printf function.
  *
- * Return: The number of characters printed.
+ * @format: a cte char.
+ *Return: the number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
 	int charcount = 0;
@@ -83,15 +86,20 @@ int _printf(const char *format, ...)
 		else if ((*format == '%') && (*(format + 1) == '%'))
 		{
 			charcount += print_pourcentage();
-			format ++;
+			format += 2;
+		}
+		else if ((*format == '%'))
+		{
+			write(1, format, 1);
+			charcount++;
+			format++;
 		}
 		else
 		{
 			write(1, format, 1);
 			charcount++;
-			format += 2;
+			format++;
 		}
 	}
-	va_end(ptr);
 	return (charcount);
 }
