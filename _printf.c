@@ -14,7 +14,7 @@
 
 int _printf(const char *format, ...)
 {
-	const char *format1 = format;
+	char str1 = '\0', *str2 = NULL, str3 = '\0';
 	int charcount = 0;
 	va_list ptr;
 
@@ -31,14 +31,14 @@ int _printf(const char *format, ...)
 
 				case 'c':
 					{
-						char str1 = (char)va_arg(ptr, int);
+						str1 = (char)va_arg(ptr, int);
 						write(1, &str1, 1);
 						format = format + 2;
 					}
 					break;
 				case 's':
 					{
-						char* str2 = va_arg(ptr, char*);
+						str2 = va_arg(ptr, char*);
 						while (*str2)
 						{
 							write(1, str2, 1);
@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					{
-						char str3='%';
+						str3='%';
 						write(1, &str3, 1);
 						format = format + 2;
 					}
