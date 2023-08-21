@@ -9,8 +9,8 @@
 int print_char(va_list ptr);
 int print_string(va_list ptr);
 int print_pourcentage(void);
+int _putchar(char c);
+int _print_number(int n);
 int _printf(const char *format, ...);
-char *int_to_char(int num);
-int my_strlen(const char *str);
 
 #endif
