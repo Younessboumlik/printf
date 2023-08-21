@@ -47,7 +47,8 @@ int print_string(va_list ptr)
  */
 int print_pourcentage(void)
 {
-	write(1, '%', 1);
+	char str3 = '%';
+	write(1, &str3, 1);
 	return (1);
 }
 
