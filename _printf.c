@@ -132,12 +132,6 @@ int _printf(const char *format, ...)
 			charcount += print_pourcentage();
 			format += 2;
 		}
-		else if ((*format == '%'))
-		{
-			write(1, format, 1);
-			charcount++;
-			format++;
-		}
 		else
 		{
 			write(1, format, 1);
