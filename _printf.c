@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_char - it is printing one char.
+ *
  *
  * @ptr: a pointer that point at the arg.
  * Return: the number of characters printed, it is always 1.
