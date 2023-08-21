@@ -6,8 +6,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+int _printf(const char *format, ...);
 char *int_to_char(int num);
 int my_strlen(const char *str);
-int _printf(const char *format, ...);
+
 
 #endif
