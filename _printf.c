@@ -61,48 +61,7 @@ int print_pourcentage(void)
  *
  * Return: the lengh.
  */
-int my_strlen(const char *str)
-{
-	int len = 0;
 
-	while (*str != '\0')
-	{
-		len++;
-		str++;
-	}
-	return (len);
-}
-
-/**
- * int_to_char - transform int to char.
- *
- * Return: return a char caontaining the number.
- */
-
-char *int_to_char(int num)
-{
-	int i = 1, a = num, j = 1;
-	char *char_num;
-
-	if (num == 0)
-	{
-		return ("0");
-	}
-	while (a / 10 != 0)
-	{
-		a = a / 10;
-		j = j + 1;
-	}
-	char_num = malloc(sizeof(char) * (j + 1));
-	char_num[j] = '\0';
-	while (num != 0)
-	{
-		char_num[j - i] = ((num % 10) + '0');
-		num = num / 10;
-		i++;
-	}
-	return (char_num);
-}
 
 /**
  *_printf - it is the printf function.
@@ -136,6 +95,9 @@ int _printf(const char *format, ...)
 			charcount += print_pourcentage();
 			format += 2;
 		}
+		else if ((*format == '%') && ((*(format + 1) == 'd') || ((*(format + 1) == 'i'))
+                        count += _print_number(va_arg(args, int));
+                        break;
 		else
 		{
 			write(1, format, 1);
