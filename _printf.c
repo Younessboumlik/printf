@@ -10,10 +10,6 @@
 int print_char(va_list ptr)
 {
 	char str1 = (char)va_arg(ptr, int);
-	if (str1 == NULL)
-	{
-		return (-1);
-	}
 	write(1, &str1, 1);
 	return (1);
 }
