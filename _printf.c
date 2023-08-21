@@ -25,7 +25,7 @@ int print_string(va_list ptr)
 	int charcount = 0;
 	char *str2 = va_arg(ptr, char *);
 
-	if (str == NULL)
+	if (str2 == NULL)
 	{
 		str = "(null)";
 	}
