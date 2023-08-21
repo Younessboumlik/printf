@@ -28,8 +28,6 @@ int print_string(va_list ptr)
 	if (str == NULL)
 	{
 		str = "(null)";
-		if (precision >= 6)
-			str = "      ";
 	}
 
 	while (*str2)
