@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - it is the printf function.
  *
@@ -18,7 +17,6 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (*format)
 	{
-		charcount = charcount + 1;
 		if (*format == '%')
 		{
 			switch (*(format + 1))
@@ -26,9 +24,10 @@ int _printf(const char *format, ...)
 
 				case 'c':
 					{
-						str1 = (char)va_arg(ptr, int);
+						str1 = ((char)va_arg(ptr, int));
 						write(1, &str1, 1);
 						format = format + 2;
+						charcount = charcount + 1;
 					}
 					break;
 				case 's':
@@ -38,12 +37,14 @@ int _printf(const char *format, ...)
 						{
 							write(1, str2, 1);
 							str2 = str2 + 1;
+							charcount = charcount + 1;
 						}
 						format = format + 2;
 					}
 					break;
 				case '%':
 					{
+						charcount = charcount + 1;
 						str3='%';
 						write(1, &str3, 1);
 						format = format + 2;
@@ -56,6 +57,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			write(1,format,1);
+			charcount = charcount + 1;
 			format = format + 1;
 		}
 	}
