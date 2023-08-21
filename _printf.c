@@ -9,10 +9,10 @@
 
 int print_char(va_list ptr)
 {
-	char str1 = (char)va_arg(ptr, int);
+    char str1 = (char)va_arg(ptr, int);
 
-	write(1, &str1, 1);
-	return (1);
+    write(1, &str1, 1);
+    return (1);
 }
 
 /**
@@ -24,23 +24,23 @@ int print_char(va_list ptr)
 
 int print_string(va_list ptr)
 {
-	int charcount = 0;
-	char *str2 = va_arg(ptr, char *);
+    int charcount = 0;
+    char *str2 = va_arg(ptr, char *);
 
-	if (str2 == NULL)
-	{
-		write(1, "(null)", 6);
-		return (-1);
-	}
+    if (str2 == NULL)
+    {
+        write(1, "(null)", 6);
+        return (6);
+    }
 
-	while (*str2)
-	{
-		write(1, str2, 1);
-		str2 = str2 + 1;
-		charcount++;
-	}
+    while (*str2)
+    {
+        write(1, str2, 1);
+        str2 = str2 + 1;
+        charcount++;
+    }
 
-	return (charcount);
+    return (charcount);
 }
 
 /**
@@ -51,10 +51,10 @@ int print_string(va_list ptr)
  */
 int print_pourcentage(void)
 {
-	char str3 = '%';
+    char str3 = '%';
 
-	write(1, &str3, 1);
-	return (1);
+    write(1, &str3, 1);
+    return (1);
 }
 
 /**
@@ -66,36 +66,36 @@ int print_pourcentage(void)
 
 int _printf(const char *format, ...)
 {
-	int charcount = 0;
-	va_list ptr;
+    int charcount = 0;
+    va_list ptr;
 
-	va_start(ptr, format);
-	if (format == NULL)
-		return (-1);
-	while (*format)
-	{
-		if ((*format == '%') && (*(format + 1) == 'c'))
-		{
-			charcount += print_char(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == 's'))
-		{
-			charcount += print_string(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == '%'))
-		{
-			charcount += print_pourcentage();
-			format += 2;
-		}
-		else
-		{
-			write(1, format, 1);
-			charcount++;
-			format++;
-		}
-	}
-	va_end(ptr);
-	return (charcount);
+    va_start(ptr, format);
+    if (format == NULL)
+        return (-1);
+    while (*format)
+    {
+        if ((*format == '%') && (*(format + 1) == 'c'))
+        {
+            charcount += print_char(ptr);
+            format += 2;
+        }
+        else if ((*format == '%') && (*(format + 1) == 's'))
+        {
+            charcount += print_string(ptr);
+            format += 2;
+        }
+        else if ((*format == '%') && (*(format + 1) == '%'))
+        {
+            charcount += print_pourcentage();
+            format += 2;
+        }
+        else
+        {
+            write(1, format, 1);
+            charcount++;
+            format++;
+        }
+    }
+    va_end(ptr);
+    return (charcount);
 }
