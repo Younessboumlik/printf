@@ -10,6 +10,7 @@
 int print_char(va_list ptr)
 {
     char str1 = (char)va_arg(ptr, int);
+
     write(1, &str1, 1);
     return (1);
 }
@@ -25,6 +26,7 @@ int print_string(va_list ptr)
 {
     int charcount = 0;
     char *str2 = va_arg(ptr, char*);
+
     if (str2 == NULL)
     {
         write(1, "(null)", 6);
@@ -47,6 +49,7 @@ int print_string(va_list ptr)
 int print_pourcentage()
 {
     char str3 = '%';
+
     write(1, &str3, 1);
     return (1);
 }
