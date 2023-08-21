@@ -78,23 +78,16 @@ int _printf(const char *format, ...)
 		{
 			charcount += print_char(ptr);
 			format += 2;
-			continue;
 		}
 		else if ((*format == '%') && (*(format + 1) == 's'))
 		{
 			charcount += print_string(ptr);
 			format += 2;
-			continue;
 		}
 		else if ((*format == '%') && (*(format + 1) == '%'))
 		{
 			charcount += print_pourcentage();
 			format += 2;
-			continue;
-		}
-		else if(*format == '%')
-		{
-			format++;
 		}
 		else
 		{
