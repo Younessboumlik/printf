@@ -27,7 +27,7 @@ int print_string(va_list ptr)
 
 	if (str2 == NULL)
 	{
-		str = "(null)";
+		str2 = "(null)";
 	}
 
 	while (*str2)
