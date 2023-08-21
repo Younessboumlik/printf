@@ -9,11 +9,11 @@
 
 int print_char(va_list ptr)
 {
-	char str1 = (char)(va_arg(ptr, int));
-
-	write(1, &str1, 1);
-	return (1);
+    char c = (char)va_arg(ptr, int);
+    write(1, &c, 1);
+    return (1);
 }
+
 
 /**
  * print_string - it is printing one string.
@@ -46,6 +46,7 @@ int print_string(va_list ptr)
 /**
  * print_pourcentage - it is printing a %.
  *
+ * void : nothing.
  * Return: the number of characters printed, and it is always 1.
  */
 int print_pourcentage(void)
@@ -55,15 +56,18 @@ int print_pourcentage(void)
 	write(1, &str3, 1);
 	return (1);
 }
+
 /**
- * my_strlen - lengh of a string.
+ * _printf - it is the printf function.
  *
- * Return: the lengh.
+ * @format: a cte char.
+ * Return: the number of characters printed.
  */
 
+/* ... (rest of your code for print_char, print_string, and print_pourcentage) ... */
 
 /**
- *_printf - it is the printf function.
+ * _printf - it is the printf function.
  *
  * @format: a cte char.
  * Return: the number of characters printed.
@@ -71,35 +75,41 @@ int print_pourcentage(void)
 
 int _printf(const char *format, ...)
 {
-	int charcount = 0;
-	va_list ptr;
+    int charcount = 0;
+    va_list ptr;
 
-	va_start(ptr, format);
-	if (format == NULL)
-		return (-1);
-	while (*format)
-	{
-		if ((*format == '%') && (*(format + 1) == 'c'))
-		{
-			charcount += print_char(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == 's'))
-		{
-			charcount += print_string(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == '%'))
-		{
-			charcount += print_pourcentage();
-			format += 2;
-		}
-		else
-		{
-			write(1, format, 1);
-			charcount++;
-			format++;
-		}
-	}
-	return (charcount);
+    va_start(ptr, format);
+    if (format == NULL)
+        return (-1);
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+                case 'c':
+                    charcount += print_char(ptr);
+                    break;
+                case 's':
+                    charcount += print_string(ptr);
+                    break;
+                case '%':
+                    charcount += print_pourcentage();
+                    break;
+                default:
+                    write(1, format - 1, 1);
+                    charcount++;
+                    break;
+            }
+        }
+        else
+        {
+            write(1, format, 1);
+            charcount++;
+        }
+        format++; // Move this line outside the switch block
+    }
+    va_end(ptr);
+    return (charcount);
 }
