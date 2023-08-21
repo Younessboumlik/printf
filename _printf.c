@@ -1,4 +1,5 @@
 #include "main.h"
+#include "_printf2.c"
 
 /**
  * print_char - it is printing one char.
