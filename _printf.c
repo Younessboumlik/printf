@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _printf - it is the printf function.
  *
@@ -45,7 +46,7 @@ int _printf(const char *format, ...)
 				case '%':
 					{
 						charcount = charcount + 1;
-						str3='%';
+						str3 = '%';
 						write(1, &str3, 1);
 						format = format + 2;
 					}
@@ -56,7 +57,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			write(1,format,1);
+			write(1, format, 1);
 			charcount = charcount + 1;
 			format = format + 1;
 		}
