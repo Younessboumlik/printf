@@ -77,7 +77,7 @@ int _printf(const char *format, ...)
                     format += 2;
                     break;
                 case '%':
-                    charcount += print_percent();
+                    charcount += print_pourcentage();
                     format += 2;
                     break;
                 default:
