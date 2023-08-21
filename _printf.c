@@ -64,15 +64,6 @@ int print_pourcentage(void)
  * Return: the number of characters printed.
  */
 
-/* ... (rest of your code for print_char, print_string, and print_pourcentage) ... */
-
-/**
- * _printf - it is the printf function.
- *
- * @format: a cte char.
- * Return: the number of characters printed.
- */
-
 int _printf(const char *format, ...)
 {
     int charcount = 0;
@@ -108,7 +99,7 @@ int _printf(const char *format, ...)
             write(1, format, 1);
             charcount++;
         }
-        format++; // Move this line outside the switch block
+        format++; 
     }
     va_end(ptr);
     return (charcount);
