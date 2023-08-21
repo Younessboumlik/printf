@@ -8,9 +8,9 @@
  */
 int print_char(va_list ptr)
 {
-    char c = va_arg(types, int);
+    char c = va_arg(ptr, int);
 
-    return write(1, &c, 1);
+    return (write(1, &c, 1));
 }
 
 /**
@@ -26,7 +26,7 @@ int print_string(va_list ptr)
     if (str == NULL)
         str = "(null)";
 
-    return write(1, str, strlen(str));
+    return (write(1, str, strlen(str)));
 }
 
 
@@ -37,7 +37,7 @@ int print_string(va_list ptr)
  */
 int print_pourcentage(void)
 {
-    return write(1, "%", 1);
+    return (write(1, "%", 1));
 }
 
 /**
