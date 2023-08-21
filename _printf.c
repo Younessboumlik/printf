@@ -89,7 +89,7 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			charcount++;
-			format++;
+			format += 2;
 		}
 	}
 	va_end(ptr);
