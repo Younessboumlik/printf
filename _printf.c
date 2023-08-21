@@ -91,7 +91,6 @@ int _printf(const char *format, ...)
 		}
 		else if ((*format == '%'))
 		{
-			charcount++;
 			format++;
 		}
 		else
