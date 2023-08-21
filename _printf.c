@@ -35,7 +35,7 @@ int print_string(va_list ptr)
  *
  * Return: The number of characters printed, always 1.
  */
-int print_percent(void)
+int print_pourcentage(void)
 {
     return write(1, "%", 1);
 }
