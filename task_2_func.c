@@ -42,35 +42,35 @@ int print_binary(va_list ptr)
  */
 int print_int(va_list ptr)
 {
-    int int_input;
-    unsigned int int_in, int_temp, i, div, isneg;
+	int int_input;
+	unsigned int int_in, int_temp, i, div, isneg;
 
-    int_input = va_arg(ptr, int);
-    isneg = 0;
-    if (int_input < 0)
-    {
-        int_in = int_input * -1;
-        write(1, "-", 1);
-        isneg = 1;
-    }
-    else
-    {
-        int_in = int_input;
-    }
+	int_input = va_arg(ptr, int);
+	isneg = 0;
+	if (int_input < 0)
+	{
+		int_in = int_input * -1;
+		write(1, "-", 1);
+		isneg = 1;
+	}
+	else
+	{
+		int_in = int_input;
+	}
 
-    int_temp = int_in;
-    div = 1;
+	int_temp = int_in;
+	div = 1;
 
-    while (int_temp > 9)
-    {
-        div *= 10;
-        int_temp /= 10;
-    }
+	while (int_temp > 9)
+	{
+		div *= 10;
+		int_temp /= 10;
+	}
 
-    for (i = 0; div > 0; div /= 10, i++)
-    {
-        char c = ((int_in / div) % 10) + '0';
-        write(1, &c, 1);
-    }
-    return (i + isneg);
+	for (i = 0; div > 0; div /= 10, i++)
+	{
+		char c = ((int_in / div) % 10) + '0';
+		write(1, &c, 1);
+	}
+	return (i + isneg);
 }
