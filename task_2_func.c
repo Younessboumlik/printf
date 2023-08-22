@@ -33,8 +33,6 @@ int print_binary(va_list ptr)
 
 	return (charcount);
 }
-#include <unistd.h>
-#include <stdarg.h>
 
 int print_pointer_recursive(unsigned long address, int charcount)
 {
