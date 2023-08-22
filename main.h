@@ -9,9 +9,9 @@
 int print_char(va_list ptr);
 int print_string(va_list ptr);
 int print_pourcentage(void);
-int handle_format(char c, va_list ptr);
-int print_int(va_list arguments)
-int _printf(const char *format, ...);
+int print_int(va_list arguments);
 int print_binary(va_list ptr);
+int _printf(const char *format, ...);
+
 
 #endif
