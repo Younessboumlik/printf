@@ -36,11 +36,15 @@ int _printf(const char *format, ...)
                 case 'b':
                     charcount += print_binary(ptr);
                     break;
+                case 'd':
+                case 'i':
+                    charcount += print_int(ptr);
+                    break;
                 default:
                     write(1, &c, 1);
                     charcount++;
             }
-            format++;
+            format++; /* Move to the character after the specifier */
         }
         else
         {
@@ -52,3 +56,4 @@ int _printf(const char *format, ...)
     va_end(ptr);
     return (charcount);
 }
+
