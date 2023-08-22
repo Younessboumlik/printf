@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
                     charcount += print_string(ptr);
                     break;
                 case '%':
-                    charcount += print_pourcentage();
+                    charcount += print_pourcentage(void);
                     break;
                 default:
                     write(1, format - 1, 1);
