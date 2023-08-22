@@ -25,11 +25,9 @@ int print_binary(va_list ptr)
 		n /= 2;
 	}
 
-
 	charcount = i;
 	while (i--)
 		write(1, &buffer[i], 1);
-
 
 	return (charcount);
 }
