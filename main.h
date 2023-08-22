@@ -6,8 +6,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int print_char(va_list ptr)
-int print_string(va_list ptr)
+int print_char(va_list ptr);
+int print_string(va_list ptr);
 int print_pourcentage(void);
 int print_binary(va_list ptr);
 int _printf(const char *format, ...);
