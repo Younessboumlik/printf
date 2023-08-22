@@ -51,18 +51,8 @@ int print_pourcentage(void)
 
 	write(1, &str3, 1);
 	return (1);
-}
-#include <stdarg.h>
-#include <unistd.h>
 
-/**
- * print_int - Prints an int.
- * @ptr: A pointer that points at the arg.
- *
- * Return: The number of characters printed.
- */
-#include <stdarg.h>
-#include <unistd.h>
+
 
 /**
  * print_int - Prints an int.
@@ -71,36 +61,38 @@ int print_pourcentage(void)
  * @ibuf: integer.
  * Return: The number of characters printed.
  */
-int print_int(va_list arguments, char *buf, unsigned int ibuf)
+int print_int(va_list arguments)
 {
-	int int_input;
-	unsigned int int_in, int_temp, i, div, isneg;
+    int int_input;
+    unsigned int int_in, int_temp, i, div, isneg;
+    char c;
 
-	int_input = va_arg(arguments, int);
-	isneg = 0;
-	if (int_input < 0)
-	{
-		int_in = int_input * -1;
-		ibuf = handl_buf(buf, '-', ibuf);
-		isneg = 1;
-	}
-	else
-	{
-		int_in = int_input;
-	}
+    int_input = va_arg(arguments, int);
+    isneg = 0;
+    if (int_input < 0)
+    {
+        int_in = int_input * -1;
+        write(1, "-", 1);
+        isneg = 1;
+    }
+    else
+    {
+        int_in = int_input;
+    }
 
-	int_temp = int_in;
-	div = 1;
+    int_temp = int_in;
+    div = 1;
 
-	while (int_temp > 9)
-	{
-		div *= 10;
-		int_temp /= 10;
-	}
+    while (int_temp > 9)
+    {
+        div *= 10;
+        int_temp /= 10;
+    }
 
-	for (i = 0; div > 0; div /= 10, i++)
-	{
-		ibuf = handl_buf(buf, ((int_in / div) % 10) + '0', ibuf);
-	}
-	return (i + isneg);
+    for (i = 0; div > 0; div /= 10, i++)
+    {
+        c = ((int_in / div) % 10) + '0';
+        write(1, &c, 1);
+    }
+    return (i + isneg);
 }
