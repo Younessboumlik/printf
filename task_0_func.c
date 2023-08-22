@@ -66,39 +66,41 @@ int print_pourcentage(void)
 
 /**
  * print_int - Prints an int.
- * @ptr: A pointer that points at the arg.
- *
+ * @arguments: an argument.
+ * @buf: buffer.
+ * @ibuf: integer.
  * Return: The number of characters printed.
  */
-int print_int(va_list ptr)
+int print_int(va_list arguments, char *buf, unsigned int ibuf)
 {
-	int n = va_arg(ptr, int);
-	int charcount = 0;
-	char buffer[20];
-	int i = 0;
+	int int_input;
+	unsigned int int_in, int_temp, i, div, isneg;
 
-	if (n == 0)
+	int_input = va_arg(arguments, int);
+	isneg = 0;
+	if (int_input < 0)
 	{
-		write(1, "0", 1);
-		return (1);
+		int_in = int_input * -1;
+		ibuf = handl_buf(buf, '-', ibuf);
+		isneg = 1;
+	}
+	else
+	{
+		int_in = int_input;
 	}
 
-	if (n < 0)
+	int_temp = int_in;
+	div = 1;
+
+	while (int_temp > 9)
 	{
-		write(1, "-", 1);
-		charcount++;
-		n = -n;
+		div *= 10;
+		int_temp /= 10;
 	}
 
-	while (n > 0)
+	for (i = 0; div > 0; div /= 10, i++)
 	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
+		ibuf = handl_buf(buf, ((int_in / div) % 10) + '0', ibuf);
 	}
-
-	charcount += i;
-	while (i--)
-		write(1, &buffer[i], 1);
-
-	return (charcount);
+	return (i + isneg);
 }
