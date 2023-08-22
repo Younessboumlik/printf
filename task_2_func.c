@@ -33,34 +33,3 @@ int print_binary(va_list ptr)
 
 	return (charcount);
 }
-
-int print_pointer_recursive(unsigned long address, int charcount)
-{
-    if (address == 0)
-        return charcount;
-
-    charcount = print_pointer_recursive(address >> 4, charcount);
-    int digit = address & 0xf;
-    char c = digit < 10 ? '0' + digit : 'a' + digit - 10;
-    write(1, &c, 1);
-    return charcount + 1;
-}
-
-int print_pointer(va_list ptr)
-{
-    void *p = va_arg(ptr, void *);
-    int charcount = 0;
-
-    write(1, "0x", 2);
-    charcount += 2;
-    unsigned long address = (unsigned long)p;
-    if (address == 0)
-    {
-        write(1, "0", 1);
-        charcount++;
-    }
-    else
-        charcount = print_pointer_recursive(address, charcount);
-
-    return charcount;
-}
