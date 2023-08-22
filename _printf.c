@@ -8,9 +8,10 @@
  */
 int print_char(va_list ptr)
 {
-	char c = va_arg(ptr, int);
+	char str1 = va_arg(ptr, int);
 
-	return (write(1, &c, 1));
+	write(1, &str1, 1);
+	return (1);
 }
 
 /**
@@ -25,12 +26,18 @@ int print_string(va_list ptr)
 	char *str2 = va_arg(ptr, char *);
 
 	if (str2 == NULL)
+	{
 		str2 = "(null)";
+	}
 
-	while (str2[charcount] != '\0')
+	while (*str2)
+	{
+		write(1, str2, 1);
+		str2 = str2 + 1;
 		charcount++;
+	}
 
-	return (write(1, str2, charcount));
+	return (charcount);
 }
 
 /**
@@ -40,7 +47,10 @@ int print_string(va_list ptr)
  */
 int print_pourcentage(void)
 {
-	return (write(1, "%", 1));
+	char str3 = '%';
+
+	write(1, &str3, 1);
+	return (1);
 }
 
 /**
@@ -59,27 +69,20 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (*format)
 	{
-		if (*format == '%')
+		if ((*format == '%') && (*(format + 1) == 'c'))
 		{
-			format++; /* Increment to the specifier character */
-			if (*format == 'c')
-			{
-				charcount += print_char(ptr);
-			}
-			else if (*format == 's')
-			{
-				charcount += print_string(ptr);
-			}
-			else if (*format == '%')
-			{
-				charcount += print_pourcentage();
-			}
-			else
-			{
-				write(1, format - 1, 1);
-				charcount++;
-			}
-			format++; /* Move to the character after the specifier */
+			charcount += print_char(ptr);
+			format += 2;
+		}
+		else if ((*format == '%') && (*(format + 1) == 's'))
+		{
+			charcount += print_string(ptr);
+			format += 2;
+		}
+		else if ((*format == '%') && (*(format + 1) == '%'))
+		{
+			charcount += print_pourcentage();
+			format += 2;
 		}
 		else
 		{
