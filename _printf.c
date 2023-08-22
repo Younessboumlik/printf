@@ -6,47 +6,45 @@
  *
  * Return: The number of characters printed.
  */
-
 int _printf(const char *format, ...)
 {
-	int charcount = 0;
-	va_list ptr;
+    int charcount = 0;
+    va_list args;
+    va_start(args, format);
 
-	va_start(ptr, format);
-	if (format == NULL)
-		return (-1);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++; /* Increment to the specifier character */
-			switch (*format)
-			{
-				case 'c':
-					charcount += print_char(ptr);
-					break;
-				case 's':
-					charcount += print_string(ptr);
-					break;
-				case '%':
-					charcount += print_pourcentage();
-					break;
-				case 'b':
-					charcount += print_binary(ptr);
-					break;
-				default:
-					write(1, format, 1);
-					charcount++;
-			}
-			format++; /* Move to the character after the specifier */
-		}
-		else
-		{
-			write(1, format, 1);
-			charcount++;
-			format++;
-		}
-	}
-	va_end(ptr);
-	return (charcount);
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            if (*format == 'c')
+            {
+                char ch = (char)va_arg(args, int);
+                write(1, &ch, 1);
+                charcount++;
+            }
+            else if (*format == 's')
+            {
+                char *str = va_arg(args, char *);
+                int len = 0;
+                while (str[len])
+                    len++;
+                write(1, str, len);
+                charcount += len;
+            }
+            else if (*format == '%')
+            {
+                write(1, "%", 1);
+                charcount++;
+            }
+        }
+        else
+        {
+            write(1, format, 1);
+            charcount++;
+        }
+        format++;
+    }
+    va_end(args);
+    return charcount;
 }
