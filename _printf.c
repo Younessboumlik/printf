@@ -59,20 +59,27 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (*format)
 	{
-		if ((*format == '%') && (*(format + 1) == 'c'))
+		if (*format == '%')
 		{
-			charcount += print_char(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == 's'))
-		{
-			charcount += print_string(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == '%'))
-		{
-			charcount += print_pourcentage();
-			format += 2;
+			format++; /* Increment to the specifier character */
+			if (*format == 'c')
+			{
+				charcount += print_char(ptr);
+			}
+			else if (*format == 's')
+			{
+				charcount += print_string(ptr);
+			}
+			else if (*format == '%')
+			{
+				charcount += print_pourcentage();
+			}
+			else
+			{
+				write(1, format, 1);
+				charcount++;
+			}
+			format++; /* Move to the character after the specifier */
 		}
 		else
 		{
