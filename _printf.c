@@ -6,6 +6,7 @@
  *
  * Return: The number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
 	int charcount = 0;
@@ -16,20 +17,28 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (*format)
 	{
-		if ((*format == '%') && (*(format + 1) == 'c'))
+		if (*format == '%')
 		{
-			charcount += print_char(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == 's'))
-		{
-			charcount += print_string(ptr);
-			format += 2;
-		}
-		else if ((*format == '%') && (*(format + 1) == '%'))
-		{
-			charcount += print_pourcentage();
-			format += 2;
+			format++; /* Increment to the specifier character */
+			switch (*format)
+			{
+				case 'c':
+					charcount += print_char(ptr);
+					break;
+				case 's':
+					charcount += print_string(ptr);
+					break;
+				case '%':
+					charcount += print_pourcentage();
+					break;
+				case 'b':
+					charcount += print_binary(ptr);
+					break;
+				default:
+					write(1, format, 1);
+					charcount++;
+			}
+			format++; /* Move to the character after the specifier */
 		}
 		else
 		{
