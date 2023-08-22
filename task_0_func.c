@@ -2,26 +2,16 @@
 
 /**
  * print_char - Prints one char.
- * @c: A pointer that points at the arg.
+ * @va_list ptr: A pointer that points at the arg.
  *
  * Return: The number of characters printed, always 1.
  */
-int print_char(char c)
+int print_char(va_list ptr)
 {
-	static char buf[1024];
-    	static int i;
+	char str1 = va_arg(ptr, int);
 
-    	if (c == -1 || i >= 1024)
-    	{
-        	write(1, &buf, i);
-        	i = 0;
-    	}
-    	if (c != -1)
-    	{
-        	buf[i] = c;
-        	i++;
-    	}
-    	return (1);
+	write(1, &str1, 1);
+	return (1);
 }
 
 /**
@@ -30,13 +20,24 @@ int print_char(char c)
  *
  * Return: The length of the string.
  */
-int print_string(char* str)
+int print_string(va_list ptr)
 {
-	register int i;
+    int charcount = 0;
+    char *str2 = va_arg(ptr, char *);
 
-	for (i = 0; str[i] != '\0'; i++)
-        	_putchar(str[i]);
-    	return (i);
+    if (str2 == NULL)
+    {
+        str2 = "(null)";
+    }
+
+    while (*str2)
+    {
+        write(1, str2, 1);
+        str2++;
+        charcount++;
+    }
+
+    return charcount;
 }
 
 /**
