@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		}
 		else if ((*format == '%') && (*(format + 1) == '%'))
 		{
-			charcount += print_pourcentage(void);
+			charcount += print_pourcentage();
 			format += 2;
 		}
 		else
