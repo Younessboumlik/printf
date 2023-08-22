@@ -34,6 +34,12 @@ int print_binary(va_list ptr)
 	return (charcount);
 }
 
+/**
+ * print_int - Prints an int.
+ * @ptr: A pointer that points at the arg.
+ *
+ * Return: The number of int printed.
+ */
 int print_int(va_list ptr)
 {
     int int_input;
