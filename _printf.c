@@ -7,7 +7,7 @@
  * Return: The number of characters printed.
  */
 
-int handle_format(char c, va_list ptr, char *buf, unsigned int ibuf)
+int handle_format(char c, va_list ptr)
 {
 	int charcount = 0;
 
