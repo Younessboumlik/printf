@@ -2,7 +2,7 @@
 
 /**
  * print_char - Prints one char.
- * @va_list ptr: A pointer that points at the arg.
+ * @ptr: A pointer that points at the arg.
  *
  * Return: The number of characters printed, always 1.
  */
@@ -16,28 +16,26 @@ int print_char(va_list ptr)
 
 /**
  * print_string - Prints one string.
- * @va_list: A pointer that points at the arg.
+ * @ptr: A pointer that points at the arg.
  *
  * Return: The length of the string.
  */
 int print_string(va_list ptr)
 {
 	int charcount = 0;
-    	char *str2 = va_arg(ptr, char *);
+	char *str2 = va_arg(ptr, char *);
 
 	if (str2 == NULL)
+		str2 = "(null)";
+
+	while (*str2)
 	{
-        	str2 = "(null)";
-    	}
+		write(1, str2, 1);
+		str2++;
+		charcount++;
+	}
 
-    	while (*str2)
-    	{
-        	write(1, str2, 1);
-        	str2++;
-        	charcount++;
-    	}
-
-    	return (charcount);
+	return (charcount);
 }
 
 /**
