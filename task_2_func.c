@@ -39,7 +39,7 @@ int print_int(va_list ptr)
     int int_input;
     unsigned int int_in, int_temp, i, div, isneg;
 
-    int_input = va_arg(arguments, int);
+    int_input = va_arg(ptr, int);
     isneg = 0;
     if (int_input < 0)
     {
