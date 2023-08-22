@@ -33,3 +33,23 @@ int print_binary(va_list ptr)
 
 	return (charcount);
 }
+int print_pointer(va_list ptr)
+{
+    void *p = va_arg(ptr, void *);
+    int charcount = 0;
+    char buffer[20];
+    int i = 0;
+
+    buffer[i++] = '0';
+    buffer[i++] = 'x';
+    unsigned long address = (unsigned long)p;
+    for (int j = (sizeof(void *) * 2) - 1; j >= 0; j--)
+    {
+        int digit = (address >> (j * 4)) & 0xf;
+        buffer[i++] = digit < 10 ? '0' + digit : 'a' + digit - 10;
+    }
+    write(1, buffer, i);
+    charcount += i;
+
+    return charcount;
+}
