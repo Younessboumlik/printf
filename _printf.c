@@ -55,10 +55,10 @@ int _printf_helper(const char *format, va_list ptr, int charcount)
 			format += 2;
 		}
 		else if ((*format == '%') && 
-        	 ((*(format + 1) == 'd') || (*(format + 1) == 'i')))
+		((*(format + 1) == 'd') || (*(format + 1) == 'i')))
 		{
-    			charcount += print_int(ptr);
-    			format += 2;
+			charcount += print_int(ptr);
+			format += 2;
 		}
 		else
 		{
