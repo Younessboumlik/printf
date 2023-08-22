@@ -8,48 +8,41 @@
  */
 int _printf(const char *format, ...)
 {
-	int charcount = 0;
-	va_list ptr;
+    int charcount = 0;
+    va_list ptr;
 
-	va_start(ptr, format);
-	if (format == NULL)
-		return (-1);
-	if (!format || (format[0] == '%' && !format[1]))
-        	return (-1);
-    	if (format[0] == '%' && format[1] == ' ' && !format[2])
-        	return (-1);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++; /* Increment to the specifier character */
-			switch (*format)
-			{
-				case 'c':
-					charcount += print_char(ptr);
-					break;
-				case 's':
-					charcount += print_string(ptr);
-					break;
-				case '%':
-					charcount += print_pourcentage();
-					break;
-				case 'b':
-					charcount += print_binary(ptr);
-					break;
-				default:
-					write(1, format, 1);
-					charcount++;
-			}
-			format++; /* Move to the character after the specifier */
-		}
-		else
-		{
-			write(1, format, 1);
-			charcount++;
-			format++;
-		}
-	}
-	va_end(ptr);
-	return (charcount);
+    va_start(ptr, format);
+    if (format == NULL)
+        return (-1);
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+                case 'c':
+                    charcount += print_char(ptr);
+                    break;
+                case 's':
+                    charcount += print_string(ptr);
+                    break;
+                case '%':
+                    charcount += print_pourcentage();
+                    break;
+                default:
+                    write(1, format - 1, 1);
+                    charcount++;
+                    break;
+            }
+        }
+        else
+        {
+            write(1, format, 1);
+            charcount++;
+        }
+        format++; // Move this line outside the switch block
+    }
+    va_end(ptr);
+    return (charcount);
 }
