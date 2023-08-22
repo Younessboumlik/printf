@@ -27,7 +27,7 @@ int handle_format(char c, va_list ptr, char *buf, unsigned int ibuf)
 			break;
 		case 'd':
 		case 'i':
-			charcount += print_int(ptr, buf, ibuf);
+			charcount += print_int(ptr);
 			break;
 		default:
 			write(1, &c, 1);
