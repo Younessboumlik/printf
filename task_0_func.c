@@ -52,3 +52,44 @@ int print_pourcentage(void)
 	write(1, &str3, 1);
 	return (1);
 }
+#include <stdarg.h>
+#include <unistd.h>
+
+/**
+ * print_int - Prints an int.
+ * @ptr: A pointer that points at the arg.
+ *
+ * Return: The number of characters printed.
+ */
+int print_int(va_list ptr)
+{
+	int n = va_arg(ptr, int);
+	int charcount = 0;
+	char buffer[20];
+	int i = 0;
+
+	if (n == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		charcount++;
+		n = -n;
+	}
+
+	while (n > 0)
+	{
+		buffer[i++] = (n % 10) + '0';
+		n /= 10;
+	}
+
+	charcount += i;
+	while (i--)
+		write(1, &buffer[i], 1);
+
+	return (charcount);
+}
