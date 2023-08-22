@@ -76,7 +76,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				write(1, format, 1);
+				write(1, format - 1, 1);
 				charcount++;
 			}
 			format++; /* Move to the character after the specifier */
