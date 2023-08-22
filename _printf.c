@@ -7,7 +7,7 @@
  * Return: The number of characters printed.
  */
 
-int handle_format(char c, va_list ptr)
+int handle_format(char c, va_list ptr, char *buf, unsigned int ibuf)
 {
 	int charcount = 0;
 
@@ -27,7 +27,7 @@ int handle_format(char c, va_list ptr)
 			break;
 		case 'd':
 		case 'i':
-			charcount += print_int(ptr);
+			charcount += print_int(ptr, buf, ibuf);
 			break;
 		default:
 			write(1, &c, 1);
@@ -42,6 +42,8 @@ int _printf(const char *format, ...)
 {
 	int charcount = 0;
 	va_list ptr;
+	char buf[1024];
+	unsigned int ibuf = 0;
 
 	va_start(ptr, format);
 	if (format == NULL)
@@ -51,7 +53,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++; /* Increment to the specifier character */
-			charcount += handle_format(*format, ptr);
+			charcount += handle_format(*format, ptr, buf, ibuf);
 			format++; /* Move to the character after the specifier */
 		}
 		else
