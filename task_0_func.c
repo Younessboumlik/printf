@@ -22,22 +22,22 @@ int print_char(va_list ptr)
  */
 int print_string(va_list ptr)
 {
-    int charcount = 0;
-    char *str2 = va_arg(ptr, char *);
+	int charcount = 0;
+    	char *str2 = va_arg(ptr, char *);
 
-    if (str2 == NULL)
-    {
-        str2 = "(null)";
-    }
+	if (str2 == NULL)
+	{
+        	str2 = "(null)";
+    	}
 
-    while (*str2)
-    {
-        write(1, str2, 1);
-        str2++;
-        charcount++;
-    }
+    	while (*str2)
+    	{
+        	write(1, str2, 1);
+        	str2++;
+        	charcount++;
+    	}
 
-    return charcount;
+    	return (charcount);
 }
 
 /**
