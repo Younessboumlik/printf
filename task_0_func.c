@@ -16,7 +16,7 @@ int print_char(va_list ptr)
 
 /**
  * print_string - Prints one string.
- * @ptr: A pointer that points at the arg.
+ * @va_list: A pointer that points at the arg.
  *
  * Return: The length of the string.
  */
