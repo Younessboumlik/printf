@@ -61,6 +61,15 @@ int print_pourcentage(void)
  *
  * Return: The number of characters printed.
  */
+#include <stdarg.h>
+#include <unistd.h>
+
+/**
+ * print_int - Prints an int.
+ * @ptr: A pointer that points at the arg.
+ *
+ * Return: The number of characters printed.
+ */
 int print_int(va_list ptr)
 {
 	int n = va_arg(ptr, int);
